@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サンプル</title>
+</head>
+
+
+<head>
+  <script src="https://editor.codecogs.com/assets/js/eqneditor.api.min.js"></script>
+  <link rel="stylesheet" href="https://editor.codecogs.com/assets/css/eqneditor.css"/>
+  <script>
+    window.onload = function () {
+      textarea = EqEditor.TextArea.link('latexInput')
+        .addOutput(new EqEditor.Output('output'))
+        .addOutput(new EqEditor.Output('eqcoderaw'))
+        .addHistoryMenu(new EqEditor.History('history'));
+    
+      EqEditor.Toolbar.link('toolbar').addTextArea(textarea);
+    }
+  </script>
+</head>
+<body>
+  <div id="equation-editor">
+    <div id="history"></div>
+    <div id="toolbar"></div>
+    <div id="latexInput" autocorrect="off"></div>
+    <div id="equation-output">
+      <img id="output">
+    </div>
+  </div>
+</body>
+
+
+
+<p>Latexをhtmlへ変換</p>
+
+<p>
+<!-- <label>texコードを入力：<input type="text" id="latexInput"></label> -->
+<input type="button" value="Check" id="checkButton">
+</p>
+
+
+
+<p id="msg"></p>
+
+<div id="idName">
+  <h1>数式が表示される</h1>
+</div>
+
+<script>
+function butotnClick(){
+  msg.innerText =  '<img src="https://latex.codecogs.com/png.image?'+latexInput.textContent +'" />';
+  var mydiv = document.getElementById("idName");
+        mydiv.innerHTML = '<img src="https://latex.codecogs.com/png.image?'+latexInput.textContent +'" />';
+}
+
+
+
+let latexInput = document.getElementById('latexInput');
+latexInput.value = 'tex数式を入力';
+let msg = document.getElementById('msg');
+
+let checkButton = document.getElementById('checkButton');
+checkButton.addEventListener('click', butotnClick);
+
+
+
+
+</script>
+
+</body>
+</html>
